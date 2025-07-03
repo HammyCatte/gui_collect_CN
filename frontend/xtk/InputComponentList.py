@@ -80,15 +80,15 @@ class InputComponentFrame(tk.Frame):
     def create_widgets(self):
         self.component_hash_entry = EntryWithPlaceholder(
             self,
-            placeholder='IB Hash', color='#555',
+            placeholder='IB值', color='#555',
             width=16,
-            font=('Arial', '20', 'bold')
+            font=('Microsoft YaHei', '20', 'bold')
         )
         self.component_name_entry = EntryWithPlaceholder(
             self,
-            placeholder='Component Name', color='#555',
+            placeholder='IB命名', color='#555',
             width=16,
-            font=('Arial', '20', 'bold')
+            font=('Microsoft YaHei', '20', 'bold')
         )
         self.component_options_frame = tk.Frame(self, bg=self['bg'])
 
@@ -96,7 +96,7 @@ class InputComponentFrame(tk.Frame):
         self.remove_button.bind('<Button-1>', lambda _: self.handle_remove(self))
         self.remove_button.bind('<Enter>', lambda e: e.widget.config(bg='#A00'))
         self.remove_button.bind('<Leave>', lambda e: e.widget.config(bg='#502020'))
-        Tooltip(self.remove_button, text='Delete', bg='#FFF', waittime=100)
+        Tooltip(self.remove_button, text='删除', bg='#FFF', waittime=100)
 
         self.component_hash_entry   .grid(row=0, column=0, pady=(0,1), sticky='nsew')
         self.component_name_entry   .grid(row=1, column=0, pady=(1,0), sticky='nsew')
@@ -111,10 +111,10 @@ class InputComponentFrame(tk.Frame):
         elif variant_value == 'hi3': active_bg = '#c660cf'
 
         boolean_options = [
-            ('collect_model_data',     True, tk.PhotoImage(file=Path('resources', 'images', 'buttons', 'cube.inverted.74.png')), 'Collect model data. Model data will be extracted to the output folder.',),
-            ('collect_model_hashes',   True, tk.PhotoImage(file=Path('resources', 'images', 'buttons', 'hash.inverted.74.png')), 'Collect model hashes. Model hashes will be written to the hash.json in the output folder.',),
-            ('collect_texture_data',   True, tk.PhotoImage(file=Path('resources', 'images', 'buttons', 'dds.inverted.74.png')),  'Collect texture data. Texture data will be copied to the output folder.',),
-            ('collect_texture_hashes', True, tk.PhotoImage(file=Path('resources', 'images', 'buttons', 'hash.inverted.74.png')), 'Collect texture hashes. Texture hashes will be written to the hash.json in the output folder.',),
+            ('collect_model_data',     True, tk.PhotoImage(file=Path('resources', 'images', 'buttons', 'cube.inverted.74.png')), '收集模型数据。模型数据将被提取到输出文件夹。',),
+            ('collect_model_hashes',   True, tk.PhotoImage(file=Path('resources', 'images', 'buttons', 'hash.inverted.74.png')), '收集模型hash值。模型hash值将写入输出文件夹中的 hash.json 文件。',),
+            ('collect_texture_data',   True, tk.PhotoImage(file=Path('resources', 'images', 'buttons', 'dds.inverted.74.png')),  '收集纹理数据。纹理数据将被复制到输出文件夹。',),
+            ('collect_texture_hashes', True, tk.PhotoImage(file=Path('resources', 'images', 'buttons', 'hash.inverted.74.png')), '收集纹理hash值。纹理hash值将被写入输出文件夹中的 hash.json 文件。',),
         ]
 
         for i, (option_key, initial_value, img, option_text) in enumerate(boolean_options):

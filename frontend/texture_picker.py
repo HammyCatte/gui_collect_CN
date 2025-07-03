@@ -41,7 +41,7 @@ class TexturePicker(tk.Frame):
         self.grid_columnconfigure(2, weight=1)
 
     def load(self, export_name, components: list[Component], texture_components_idx: list[int], finish_extraction_callback):
-        self.terminal.print('Texture picker loaded')
+        self.terminal.print('纹理选择器已加载')
 
         def helper_callback(collected_textures):
             # We only display and pick textures of the components of idx in texture_components_idx
@@ -146,7 +146,7 @@ class TextureBar(tk.Frame):
         self.done.grid(sticky='nsew', row=1, column=1, padx=(0, 0), ipadx=56, ipady=16)
 
         # for i, w in enumerate((self.cancel, self.done)):
-        #     w.config(fg='#e8eaed', bg='#444', font=('Arial', 16, 'bold'), cursor='hand2')
+        #     w.config(fg='#e8eaed', bg='#444', font=('Microsoft YaHei', 16, 'bold'), cursor='hand2')
         #     w.bind('<Enter>', func=lambda e: e.widget.config(bg='#A00'))
         #     w.bind('<Leave>', func=lambda e: e.widget.config(bg='#444'))
 
@@ -312,7 +312,7 @@ class ComponentPartFrame(tk.Frame):
 
 
     def create_widgets(self):
-        self.header = tk.Label(self, text=self.header_text, anchor='center', font=('Arial', 20, 'bold'), cursor='hand2')
+        self.header = tk.Label(self, text=self.header_text, anchor='center', font=('Microsoft YaHei', 20, 'bold'), cursor='hand2')
         self.conditional_config(self.header)
 
         self.header.pack(fill='both', expand=True)
@@ -380,16 +380,16 @@ class ComponentPartTextureFrame(tk.Frame):
         )
 
     def create_widgets(self):
-        slot_label = tk.Label(self, text=self.texture.slot, font=('Arial', 16, 'bold'), bg='#333',  fg='#e8eaed')
+        slot_label = tk.Label(self, text=self.texture.slot, font=('Microsoft YaHei', 16, 'bold'), bg='#333',  fg='#e8eaed')
         slot_label.grid(row=0, column=0, ipadx=4, padx=(0, 2), rowspan=2, sticky='nsew')
 
         self.thumbnail_canvas = tk.Canvas(self, width=256//self.sub_level, height=256//self.sub_level, bg='#111', highlightthickness=0)
         self.thumbnail_canvas.grid(row=0, column=1, padx=(0, 2), rowspan=2, sticky='nsew')
 
-        texture_type_label = tk.Label(self, text=self.texture_type, font=('Arial', 20, 'bold'), bg='#333', fg='#e8eaed')
+        texture_type_label = tk.Label(self, text=self.texture_type, font=('Microsoft YaHei', 20, 'bold'), bg='#333', fg='#e8eaed')
         texture_type_label.grid(row=0, column=2, sticky='nsew')
         
-        hash_label = tk.Label(self, text=self.texture.hash, font=('Arial', 12, 'bold'), bg='#333', fg='#e8eaed')
+        hash_label = tk.Label(self, text=self.texture.hash, font=('Microsoft YaHei', 12, 'bold'), bg='#333', fg='#e8eaed')
         hash_label.grid(row=1, column=2, sticky='nsew')
 
         button_frame = tk.Frame(self, bg='#333')

@@ -31,25 +31,25 @@ class FrameAnalysis():
         self.log_analysis = LogAnalysis(self.path)
         self.cfg          = Config.get_instance().data
 
-        self.terminal.print(f'Starting Frame Analysis: <PATH>{frame_analysis_path}</PATH>\n')
+        self.terminal.print(f'开始帧分析: <PATH>{frame_analysis_path}</PATH>\n')
 
     def extract(self, input_component_hashes, input_component_names, input_components_options, game='zzz', reverse_shapekeys=False) -> list[Component]:
         components: list[Component] = []
         for name, target_hash, options in zip(input_component_names, input_component_hashes, input_components_options):
             c = Component(name=name, options=options)
 
-            self.terminal.print('Extracting model data of [{}]{}'.format(target_hash, f' - {name}' if name else ''))
+            self.terminal.print('提取模型数据 [{}]{}'.format(target_hash, f' - {name}' if name else ''))
             try:
                 self.log_analysis.extract(c, target_hash, game=game, reverse_shapekeys=reverse_shapekeys)
                 c.print()
             except BufferError:
-                self.terminal.print('<ERROR>Log Analysis Failed!</ERROR>')
+                self.terminal.print('<ERROR>日志分析失败！</ERROR>')
                 return
             except ZeroDivisionError:
-                self.terminal.print('<ERROR>Log Analysis Failed!</ERROR>')
+                self.terminal.print('<ERROR>日志分析失败！</ERROR>')
                 return
             except Exception as X:
-                self.terminal.print('<ERROR>Log Analysis Failed: {}</ERROR>'.format(X))
+                self.terminal.print('<ERROR>日志分析失败: {}</ERROR>'.format(X))
                 self.terminal.print(f'<ERROR>{traceback.format_exc()}</ERROR>')
                 return
 
@@ -82,7 +82,7 @@ class FrameAnalysis():
             try:
                 buffer_stride, buffer_elements = get_buffer_elements(txt_buffer_paths)
             except InvalidTextBufferException:
-                self.terminal.print(f'<WARNING>WARNING: SKIPPING Invalid TEXCOORD text buffer!</WARNING>')
+                self.terminal.print(f'<WARNING>警告: 跳过无效的 TEXCOORD 文本缓冲区！</WARNING>')
                 for p in buffer_paths:
                     self.terminal.print(f'<WARNING>{p.name}</WARNING>', timestamp=False)
         
@@ -113,7 +113,7 @@ class FrameAnalysis():
         try:
             buffer_stride, buffer_elements = get_buffer_elements(buffer_paths)
         except InvalidTextBufferException:
-            self.terminal.print(f'<WARNING>WARNING: SKIPPING Invalid TEXCOORD text buffer!</WARNING>')
+            self.terminal.print(f'<WARNING>警告: 跳过无效的 TEXCOORD 文本缓冲区！</WARNING>')
             for p in buffer_paths:
                 self.terminal.print(f'<WARNING>{p.name}</WARNING>', timestamp=False)
             return None, None
@@ -182,7 +182,7 @@ class FrameAnalysis():
                 if blend_elements   : elements.append(blend_elements)
                 if texcoord_elements: elements.append(texcoord_elements)
 
-                self.terminal.print(f'Constructing combined buffer for [{component.ib_hash}] - {component.name}')
+                self.terminal.print(f'构建组合缓冲区 [{component.ib_hash}] - {component.name}')
                 vb_merged = merge_buffers(buffers, elements) if buffers else None
             
             if component.options['collect_texture_data'] and  textures: _export_component_textures(export_name, extract_path, component, textures[i])
@@ -191,15 +191,15 @@ class FrameAnalysis():
         json_out = json.dumps(json_builder.build(), indent=4)
         (extract_path / 'hash.json').write_text(json_out)
 
-        self.terminal.print('Export done: {:.3}s'.format(time.time() - st))
+        self.terminal.print('导出完成: {:.3}s'.format(time.time() - st))
 
         if self.cfg.game[game].game_options.delete_frame_analysis:
             shutil.rmtree(self.path)
-            self.terminal.print('Deleted frame analysis <PATH>{}</PATH>'.format(str(self.path.absolute())))
+            self.terminal.print('删除帧分析 <PATH>{}</PATH>'.format(str(self.path.absolute())))
 
         if self.cfg.game[game].game_options.open_extract_folder:
             subprocess.run([FILEBROWSER_PATH, extract_path])
-            self.terminal.print(f'Opening <PATH>{extract_path.absolute()}</PATH> with File Explorer')
+            self.terminal.print(f'使用文件资源管理器打开 <PATH>{extract_path.absolute()}</PATH>')
 
 
 def _export_component_buffers(export_name: str, path: Path, component: Component, vb_merged):

@@ -24,29 +24,29 @@ class SettingsPage(tk.Frame):
         self.create_widgets()
 
     def create_widgets(self):
-        header = tk.Label(self, text='Warning: only enable advanced features if you know what you\'re doing!', anchor='center', fg='#FD5', bg=self['bg'], font=('Arial', 20, 'bold'))
+        header = tk.Label(self, text='警告: 仅当您知道自己在做什么时才启用高级功能！', anchor='center', fg='#FD5', bg=self['bg'], font=('Microsoft YaHei', 20, 'bold'))
         header.pack(pady=(0, 8), fill='x')
 
-        enable_targeted_checkbox = LabeledCheckbox(self, 'Targeted Frame Analysis (Advanced)', ('Arial', 18, 'bold'), initial_state=self.cfg.data.targeted_analysis_enabled)
+        enable_targeted_checkbox = LabeledCheckbox(self, '目标帧分析 (实验性)', ('Microsoft YaHei', 18, 'bold'), initial_state=self.cfg.data.targeted_analysis_enabled)
         enable_targeted_checkbox.on_toggle(lambda v: self.update_cfg('targeted_analysis_enabled', v))
         enable_targeted_checkbox.pack(padx=(8, 0), anchor='nw')
 
         hsr_shapekey_reversal_checkbox = LabeledCheckbox(
-            self, '[HSR] Reverse Applied Shapekeys for extraction (requires dump_cb marking_actions or targeted dumping)',
-            ('Arial', 18, 'bold'), initial_state=self.cfg.data.reverse_shapekeys_hsr
+            self, '[HSR] 还原形态键变形效果（需开启dump_cb或目标帧分析）',
+            ('Microsoft YaHei', 18, 'bold'), initial_state=self.cfg.data.reverse_shapekeys_hsr
         )
         hsr_shapekey_reversal_checkbox.on_toggle(lambda v: self.update_cfg('reverse_shapekeys_hsr', v))
         hsr_shapekey_reversal_checkbox.pack(padx=(8, 0), anchor='nw')
 
         zzz_shapekey_reversal_checkbox = LabeledCheckbox(
-            self, '[ZZZ] Reverse Applied Shapekeys for extraction (requires dump_cb marking_actions or targeted dumping)',
-            ('Arial', 18, 'bold'), initial_state=self.cfg.data.reverse_shapekeys_zzz
+            self, '[ZZZ] 还原形态键变形效果（需开启dump_cb或目标帧分析）',
+            ('Microsoft YaHei', 18, 'bold'), initial_state=self.cfg.data.reverse_shapekeys_zzz
         )
         zzz_shapekey_reversal_checkbox.on_toggle(lambda v: self.update_cfg('reverse_shapekeys_zzz', v))
         zzz_shapekey_reversal_checkbox.pack(padx=(8, 0), anchor='nw')
 
     def update_cfg(self, key, value):
-        self.terminal.print('Set Config: {} = {}'.format(key, value))
+        self.terminal.print('设置配置: {} = {}'.format(key, value))
         self.cfg.data.__setattr__(key, value)
         self.state.refresh_all_extract_forms()
 

@@ -4,7 +4,7 @@ from frontend.style import brighter
 
 class TextFilter(tk.Label):
     def __init__(self, parent,  callback: callable, *args, active:bool, values: tuple[str], value_labels: tuple[str]=None, initial_value_index: int, **kwargs):
-        tk.Label.__init__(self, parent, width=max(len(v) for v in values), bg=parent['bg'], font=('Arial', 16, 'bold'), cursor='hand2')
+        tk.Label.__init__(self, parent, width=max(len(v) for v in values), bg=parent['bg'], font=('Microsoft YaHei', 16, 'bold'), cursor='hand2')
         self.config(*args, **kwargs)
 
         self.active = active

@@ -4,10 +4,10 @@ from pathlib import Path
 default_extract_path = str(Path('.', '_Extracted').absolute())
 
 GAME_NAME = {
-    'zzz': 'Zenless Zone Zero',
-    'hsr': 'Honkai: Star Rail',
-    'gi' : 'Genshin Impact',
-    'hi3': 'Honkai Impact 3rd',
+    'zzz': '绝区零',
+    'hsr': '崩坏星穹铁道',
+    'gi' : '原神',
+    'hi3': '崩坏3',
 }
 
 @dataclass

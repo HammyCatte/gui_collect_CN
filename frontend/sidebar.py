@@ -60,16 +60,16 @@ class Sidebar(tk.Frame):
             side = 'bottom' if bottom else 'top'
             b.pack(side=side)
 
-        add_button(page=Page.zzz, bg_color='#e2751e', img_path='./resources/images/icons/Corin.png',   tooltip_text=f"Collect for {GAME_NAME[Page.zzz.value]}")
-        add_button(page=Page.hsr, bg_color='#7a6ce0', img_path='./resources/images/icons/Fofo.png',    tooltip_text=f"Collect for {GAME_NAME[Page.hsr.value]}")
-        add_button(page=Page.gi,  bg_color='#5fb970', img_path='./resources/images/icons/Sucrose.png', tooltip_text=f"Collect for {GAME_NAME[Page.gi.value]}")
-        add_button(page=Page.hi3, bg_color='#c660cf', img_path='./resources/images/icons/Mobius.png',  tooltip_text=f"Collect for {GAME_NAME[Page.hi3.value]}")
-        add_button(page=Page.settings, bg_color='#AAA', img_path='./resources/images/buttons/settings.1.64.png', tooltip_text="Settings", bottom=True)
-        add_button(key='Help', bg_color='#AAA', img_path='./resources/images/buttons/help.1.64.png', tooltip_text="Opens in a new tab of the default browser the link to a usage guide", bottom=True)
+        add_button(page=Page.zzz, bg_color='#e2751e', img_path='./resources/images/icons/Corin.png',   tooltip_text=f"为 {GAME_NAME[Page.zzz.value]} 提取")
+        add_button(page=Page.hsr, bg_color='#7a6ce0', img_path='./resources/images/icons/Fofo.png',    tooltip_text=f"为 {GAME_NAME[Page.hsr.value]} 提取")
+        add_button(page=Page.gi,  bg_color='#5fb970', img_path='./resources/images/icons/Sucrose.png', tooltip_text=f"为 {GAME_NAME[Page.gi.value]} 提取")
+        add_button(page=Page.hi3, bg_color='#c660cf', img_path='./resources/images/icons/Mobius.png',  tooltip_text=f"为 {GAME_NAME[Page.hi3.value]} 提取")
+        add_button(page=Page.settings, bg_color='#AAA', img_path='./resources/images/buttons/settings.1.64.png', tooltip_text="设置", bottom=True)
+        add_button(key='Help', bg_color='#AAA', img_path='./resources/images/buttons/help.1.64.png', tooltip_text="在默认浏览器的新选项卡中打开使用指南的链接", bottom=True)
 
     def handle_help_click(self):
         url = 'https://leotorrez.github.io/modding/guides/hunting'
-        self._terminal.print(f'Opened <LINK>{url}</LINK> in new tab of default browser.')
+        self._terminal.print(f'已在默认浏览器新标签页打开 <LINK>{url}</LINK> 。')
         open_new_tab(url)
 
     def refresh_buttons(self):
@@ -95,7 +95,7 @@ class Sidebar(tk.Frame):
         if page == self.active_page: return
 
         if page.value in GAME_NAME:
-            self._terminal.print(f'Collecting for <GAME>{GAME_NAME[page.value]}</GAME>')
+            self._terminal.print(f'正在为 <GAME>{GAME_NAME[page.value]}</GAME> 提取。')
 
         self._state.update_active_page(page)
         self.active_page = page

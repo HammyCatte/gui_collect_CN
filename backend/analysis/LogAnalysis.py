@@ -25,10 +25,10 @@ class LogAnalysis():
         if not component_hash_type:
             component_hash_type = self.guess_hash_type(component_hash)
             if not component_hash_type:
-                self.terminal.print('<ERROR>ERROR: Failed to find hash "{}" in FrameAnalysis log file.</ERROR>'.format(component_hash))
+                self.terminal.print('<ERROR>错误: 无法在帧分析日志文件中找到hash "{}" 。</ERROR>'.format(component_hash))
                 raise ZeroDivisionError()
             if component_hash_type not in [BufferType.IB, BufferType.Draw_VB]:
-                self.terminal.print('<ERROR>ERROR: Hash "{}" is neither an IB nor a Draw hash.</ERROR>'.format(component_hash))
+                self.terminal.print('<ERROR>错误: hash "{}" 既不是 IB hash也不是 Draw hash。</ERROR>'.format(component_hash))
                 raise ZeroDivisionError()
 
         self.set_relevant_ids (extract_component, component_hash, component_hash_type)
@@ -46,12 +46,12 @@ class LogAnalysis():
         if str(self.frame_analysis_path.absolute()).isascii():
             self.set_textures_from_log(extract_component)
         else:
-            self.terminal.print('<WARNING>Non ASCII characters detected in frame analysis path. Falling back to texdiag.exe to find texture formats.</WARNING>')
+            self.terminal.print('<WARNING>在帧分析路径中检测到非 ASCII 字符。返回到 texdiag.exe 来查找纹理格式。</WARNING>')
             self.set_textures_from_dir(extract_component)
 
 
         self.check_analysis (extract_component)
-        self.terminal.print('Log Based Extraction Done: {:.6}s'.format(time.time() - st))
+        self.terminal.print('基于日志的提取完成: {:.6}s'.format(time.time() - st))
 
 
     def guess_hash_type(self, target_hash):
@@ -109,8 +109,8 @@ class LogAnalysis():
                 }
                 ib_filepath = self.compile_ib_filepath(id, ib_hash, vs_hash, ps_hash)
                 if not ib_filepath.exists():
-                    self.terminal.print(f'<ERROR>ERROR:</ERROR> <PATH>{ib_filepath.name}</PATH><ERROR> does not exist in the frame analysis folder.</ERROR>')
-                    self.terminal.print('Your `analyse_options` [Hunting] 3dm key is missing required values.', timestamp=False)
+                    self.terminal.print(f'<ERROR>错误: </ERROR> <PATH>{ib_filepath.name}</PATH><ERROR> 不存在于帧分析文件夹中。</ERROR>')
+                    self.terminal.print('您的 `analyse_options` [Hunting] 3dm 键缺少必需的值。', timestamp=False)
                     raise BufferError()
 
                 ib_filepaths  .append(ib_filepath)
@@ -319,7 +319,7 @@ class LogAnalysis():
                 # If constant buffers are indeed missing, warn the user and give up on 
                 # shapekeys for this extraction
                 if not cb_filepath_buf.exists():
-                    self.terminal.print(f'<PATH>{cb_filepath_buf.name}</PATH><WARNING> does not exist. Discovered shapekey data cannot be extracted!</WARNING>')
+                    self.terminal.print(f'<PATH>{cb_filepath_buf.name}</PATH><WARNING> 不存在。发现的形态键数据无法提取！</WARNING>')
                     component.shapekey_cb_paths = []
                     return
 
@@ -428,9 +428,9 @@ class LogAnalysis():
             if not txt_path.exists(): missing_path = txt_path
             if not buf_path.exists(): missing_path = buf_path
             if missing_path:
-                self.terminal.print(f'<ERROR>{k}: </ERROR><PATH>{missing_path.name}</PATH><ERROR> does not exist in the frame analysis folder.</ERROR>')
-                self.terminal.print('Make sure to include `buf` in addition to `txt` in your `analyse_options` [Hunting] 3dm key.', timestamp=False)
-                self.terminal.print('If you\'re performing targeted dumps, also check your targeted .ini is correctly targeting the model.', timestamp=False)
+                self.terminal.print(f'<ERROR>{k}: </ERROR><PATH>{missing_path.name}</PATH><ERROR> 不存在于帧分析文件夹中。</ERROR>')
+                self.terminal.print('确保在 [Hunting] `analyse_options` 3dm 键中除了 `txt` 之外还包含 `buf` 。', timestamp=False)
+                self.terminal.print('如果您正在执行有针对性的转储，还请检查您的目标 .ini 是否正确针对该模型。', timestamp=False)
                 raise BufferError()
         
         return

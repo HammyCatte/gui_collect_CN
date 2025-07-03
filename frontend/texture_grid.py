@@ -51,8 +51,8 @@ class TextureGrid(tk.Frame):
         self.header   .grid_rowconfigure(1, weight=1)
         self.header.grid_columnconfigure(0, weight=1)
 
-        self.vs_label = tk.Label(self.header, text='VS Hash:', fg='#e8eaed', bg='#111', font=('Arial', 10, 'bold'), anchor='w')
-        self.ps_label = tk.Label(self.header, text='PS Hash:', fg='#e8eaed', bg='#111', font=('Arial', 10, 'bold'), anchor='w')
+        self.vs_label = tk.Label(self.header, text='VS Hash:', fg='#e8eaed', bg='#111', font=('Microsoft YaHei', 10, 'bold'), anchor='w')
+        self.ps_label = tk.Label(self.header, text='PS Hash:', fg='#e8eaed', bg='#111', font=('Microsoft YaHei', 10, 'bold'), anchor='w')
         self.vs_label.grid(row=0, column=0, sticky='nsw', padx=(0, 32))
         self.ps_label.grid(row=1, column=0, sticky='nsw', padx=(0, 32))
 
@@ -160,7 +160,7 @@ class TextureGrid(tk.Frame):
         for child in self.id_picker.winfo_children():
             child.destroy()
 
-        header = tk.Label(self.id_picker, text='ID', font=('Arial', '24', 'bold'))
+        header = tk.Label(self.id_picker, text='ID', font=('Microsoft YaHei', '24', 'bold'))
         header.config(bg='#333', fg='#e8eaed')
         header.pack(side='top', pady='4', anchor='center')
 
@@ -168,7 +168,7 @@ class TextureGrid(tk.Frame):
             if id == 'active_id': continue
             active_id = self.frames[component_index][first_index]['active_id']
 
-            id_label = tk.Label(self.id_picker, text=str(id), cursor='hand2', font=('Arial', '10', 'bold'))
+            id_label = tk.Label(self.id_picker, text=str(id), cursor='hand2', font=('Microsoft YaHei', '10', 'bold'))
             if id == active_id:
                 id_label.config(bg='#A00', fg='#e8eaed')
             else:

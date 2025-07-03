@@ -21,7 +21,7 @@ class AddressFrame(tk.Frame):
         self._state = State.get_instance()
         self.terminal = self._state.get_terminal()
 
-        self.font = Font(family='Arial', size=20, weight='bold')
+        self.font = Font(family='Microsoft YaHei', size=20, weight='bold')
         self.grid_columnconfigure(0, weight=1)
 
         self.target = target
@@ -37,7 +37,7 @@ class AddressFrame(tk.Frame):
         self.folder_path_label.config(text=self.path_text)
 
     def create_widgets(self):
-        self.folder_path_label = tk.Label(self, text='Select Frame Analysis Folder', fg='#555', anchor='w', font=self.font)
+        self.folder_path_label = tk.Label(self, text='选择帧分析文件夹', fg='#555', anchor='w', font=self.font)
         self.folder_path_label.bind('<Configure>', lambda _: self.refresh_path_text())
 
         img = tk.PhotoImage(file=Path('./resources/images/buttons/folder_open.32.png').absolute())
@@ -54,13 +54,13 @@ class AddressFrame(tk.Frame):
 
     def set_path(self, text: str):
         self.path = str(Path(text).resolve())
-        self.terminal.print('Set frame analysis path: <PATH>{}</PATH>'.format(str(self.path)))
+        self.terminal.print('设置帧分析路径:  <PATH>{}</PATH>'.format(str(self.path)))
         
         self.refresh_path_text()
         self.parent.on_address_change(text=self.path)
 
     def handle_frame_dump_pick(self):
-        path = filedialog.askdirectory(mustexist=True, title='Select Frame Analysis Folder')
+        path = filedialog.askdirectory(mustexist=True, title='选择帧分析文件夹')
         if path:
             self.set_path(path)
 
@@ -72,7 +72,7 @@ class AddressFrame(tk.Frame):
         if not frame_analysis_parent_path.exists():
             return
 
-        self.terminal.print('Looking for latest frame analysis in <PATH>{}</PATH>'.format(str(frame_analysis_parent_path)))
+        self.terminal.print('正在寻找最新的帧分析于 <PATH>{}</PATH>'.format(str(frame_analysis_parent_path)))
         frame_analysis_paths = sorted(
             [
                 f for f in frame_analysis_parent_path.iterdir()

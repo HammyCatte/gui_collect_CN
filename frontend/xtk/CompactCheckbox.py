@@ -23,7 +23,7 @@ class CompactCheckbox(tk.Canvas):
         self.core_id   = self.create_rectangle(bt+g, bt+g, h-bt-g, h-bt-g, outline='', fill=active_bg)
         if not self.active:
             self.itemconfig(self.core_id, fill=self['bg'])
-        self.text_id = self.create_text(h+4, h//2, anchor='w', text=text, font=('Arial', 16), fill='#CCC')
+        self.text_id = self.create_text(h+4, h//2, anchor='w', text=text, font=('Microsoft YaHei', 16), fill='#CCC')
 
         self.bind('<Button-1>', self.handle_click)
         self.bind('<Enter>', self.handle_enter)

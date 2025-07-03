@@ -78,7 +78,7 @@ class TextureGridItem(tk.Canvas):
 
     def create_format_label(self):
         def helper_create_format_label():
-            format_text_tag    = self.create_text(11,  10, anchor='nw', font=('Arial', 8, 'bold'), fill='#e8eaed', text=self.texture._format)
+            format_text_tag    = self.create_text(11,  10, anchor='nw', font=('Microsoft YaHei', 8, 'bold'), fill='#e8eaed', text=self.texture._format)
             format_text_bg_tag = self.create_rectangle(get_padded_bbox(self.bbox(format_text_tag), 2), fill='#222', outline='')
             self.tag_lower(format_text_tag, self.invis_event_target)
             self.tag_lower(format_text_bg_tag, format_text_tag)
@@ -88,7 +88,7 @@ class TextureGridItem(tk.Canvas):
 
     def create_size_label(self):
         size_text_tag    = self.create_text(
-            11, 28, anchor='nw', font=('Arial', 8, 'bold'), fill='#e8eaed',
+            11, 28, anchor='nw', font=('Microsoft YaHei', 8, 'bold'), fill='#e8eaed',
             text=get_size_str(self.texture.get_size())
         )
         size_text_bg_tag = self.create_rectangle(get_padded_bbox(self.bbox(size_text_tag), 2), fill='#222', outline='')
@@ -97,7 +97,7 @@ class TextureGridItem(tk.Canvas):
 
     def create_resolution_label(self):
         res_text_tag  = self.create_text(
-            11, 46, anchor='nw', font=('Arial', 8, 'bold'), fill='#e8eaed',
+            11, 46, anchor='nw', font=('Microsoft YaHei', 8, 'bold'), fill='#e8eaed',
             text=f'{self.texture._width}x{self.texture._height}'
         )
         res_text_bg_tag = self.create_rectangle(get_padded_bbox(self.bbox(res_text_tag), 2), fill='#222', outline='')
@@ -146,7 +146,7 @@ class TextureGridItem(tk.Canvas):
 
 TYPE_STYLE = {
     'bg':'#222', 'fg':'#e8eaed',
-    'font':('Arial', 18, 'bold'),
+    'font':('Microsoft YaHei', 18, 'bold'),
     'justify': 'center',
     'cursor': 'hand2',
 }
@@ -177,7 +177,7 @@ class TextureTypeFrame(ScrollableFrame):
         custom_type.focus()
 
         tk.Label(
-            self, font=('Arial', '10', 'bold'), fg='#444', bg=self['bg'], anchor='center',
+            self, font=('Microsoft YaHei', '10', 'bold'), fg='#444', bg=self['bg'], anchor='center',
             text='Either pick one of the above\noptions or type and hit Enter',
         ).pack(side='bottom', fill='x')
 
@@ -215,16 +215,16 @@ from tkinter import font as tkfont
 
 def create_colored_text(canvas: tk.Canvas, y: int, substrs: tuple[str], substrs_color: tuple[str], bg_color=None):
     state = State.get_instance()
-    if not state.has_var(State.K.F_ARIAL12):
-        F_Arial12 = tkfont.Font(family='Arial', size=12, weight='bold')
-        state.set_var(State.K.F_ARIAL12, F_Arial12)
+    if not state.has_var(State.K.F_YAHEI12):
+        F_YaHei12 = tkfont.Font(family='Microsoft YaHei', size=12, weight='bold')
+        state.set_var(State.K.F_YAHEI12, F_YaHei12)
     else:
-        F_Arial12 = state.get_var(State.K.F_ARIAL12)
+        F_YaHei12 = state.get_var(State.K.F_YAHEI12)
 
     total_width   = 0
     substrs_width = []
     for substr in substrs:
-        width = F_Arial12.measure(substr)        
+        width = F_YaHei12.measure(substr)        
         total_width += width
         substrs_width.append(width)
 
@@ -239,5 +239,5 @@ def create_colored_text(canvas: tk.Canvas, y: int, substrs: tuple[str], substrs_
 
     for substr, color, width in zip(substrs, substrs_color, substrs_width):
         x = start + offset
-        canvas.create_text(x, y, anchor='sw', text=substr, font=F_Arial12, fill=color)
+        canvas.create_text(x, y, anchor='sw', text=substr, font=F_YaHei12, fill=color)
         offset += width

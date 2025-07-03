@@ -32,13 +32,13 @@ class PathPicker(tk.Frame):
         self.pick_folder_btn.pack(side='right')
         
         def handle_click(event):
-            path = filedialog.askdirectory(mustexist=True, title='Select the location to save the extracted folder')
+            path = filedialog.askdirectory(mustexist=True, title='选择保存提取文件夹的位置')
             if path: self.set_path(path)
 
         self.pick_folder_btn.bind('<Button-1>', handle_click)
 
     def create_label(self):
-        self.path_label = tk.Label(self, text=self.path_text, fg='#999', bg=self['bg'], font=('Arial', '16'), cursor='hand2', relief='flat', anchor='w')
+        self.path_label = tk.Label(self, text=self.path_text, fg='#999', bg=self['bg'], font=('Microsoft YaHei', '16'), cursor='hand2', relief='flat', anchor='w')
         self.path_label.pack(side='left', fill='both', expand=True)
         
         img = tk.PhotoImage(file=Path('./resources/images/buttons/open_in_new.32.png').absolute())

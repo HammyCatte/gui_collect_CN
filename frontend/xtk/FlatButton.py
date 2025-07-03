@@ -5,7 +5,7 @@ class FlatButton(tk.Label):
     def __init__(self, parent, hover_bg, *args, **kwargs):
         tk.Label.__init__(self, parent)
         self.parent = parent
-        self.config(fg='#e8eaed', font=('Arial', 18, 'bold'), cursor='hand2')
+        self.config(fg='#e8eaed', font=('Microsoft YaHei', 18, 'bold'), cursor='hand2')
         self.config(*args, **kwargs)
 
         bg = self['bg']
