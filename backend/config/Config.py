@@ -11,10 +11,10 @@ class Config():
 
     def __init__(self, config_directory:str = '.'):
         if Config.__instance != None:
-            raise Exception('Config already created.')
+            raise Exception('配置已创建。')
         Config.__instance = self
 
-        print('Initializing Config')
+        print('初始化配置')
 
         self.temp_data = {}
         self._config_directory = config_directory
@@ -23,18 +23,18 @@ class Config():
 
         if not self._check_config_exists():
             self._create_config()
-            print('\t- Created config at', self._config_filepath)
+            print('\t- 创建配置：', self._config_filepath)
         else:
-            print('\t- Reading config from', self._config_filepath)
+            print('\t- 读取配置：', self._config_filepath)
 
         self._load_config()
-        print('\t- Loaded')
+        print('\t- 加载完成')
     
 
     @staticmethod
     def get_instance():
         if Config.__instance == None:
-            raise Exception('Config haven\'t been initialized.')
+            raise Exception('配置尚未初始化。')
         return Config.__instance
 
     def _check_config_exists(self):
@@ -52,7 +52,7 @@ class Config():
                 ConfigData.validate_config_data(d)
                 self.data = ConfigData(**d)
             except json.decoder.JSONDecodeError:
-                print('\tconfig: JSON Decode Error. config.json is not a valid json file.')
+                print('\tconfig：JSON 解码错误。config.json 不是有效的 json 文件。')
                 self.prompt_config_refresh()
             except InvalidConfigData:
                 pass
@@ -64,10 +64,10 @@ class Config():
     def prompt_config_refresh(self):
         ans = ''
         while ans not in ['y', 'n']:
-            ans = input('\tOverwrite config.json with default config? (y/n): ').lower()
+            ans = input('\t是否使用默认配置覆盖 config.json？ (y/n): ').lower()
 
         if ans == 'y':
             self._create_config()
             return self._load_config()
         else:
-            exit('\tInvalid config.json. Exiting.')
+            exit('\tconfig.json 配置无效，即将退出。')
