@@ -1,26 +1,26 @@
-# Collect Script with GUI
+# GUI 提取工具
 
-Used to extract model data from 3dmigoto generated frame dumps for certain anime games. Check out [3DMigoto Hunting & Dumping Tutorial](https://leotorrez.github.io/modding/guides/hunting) for a quick guide.
+用于从 3dmigoto 生成的帧转储中提取某些二次元游戏的模型数据。查看 [3DMigoto 寻模与转储教程](https://leotorrez.github.io/modding/guides/hunting) 获取快速上手指南。
 
-## Requirements
-- **Python >= 3.9**
-- texconv.exe (included in modules directory)
-- texdiag.exe (included in modules directory)
+## 环境要求
+- **Python ≥ 3.9**
+- texconv.exe（已包含在 modules 目录中）
+- texdiag.exe（已包含在 modules 目录中）
 
-> [!WARNING]
-> texconv.exe and texdiag.exe are used to convert and inspect .dds file types, and are included in the modules directory. If you're concerned about having unknown .exe bundled in which is a very valid concern, feel free to delete and grab them yourself from Microsoft DirectX's official repo here https://github.com/microsoft/DirectXTex/releases/tag/jun2024
+> [!警告]
+> texconv.exe 和 texdiag.exe 用于转换和检查 .dds 文件，这两个工具已包含在 modules 目录中。如果你担心未知的 .exe 文件被捆绑，这是非常合理的安全考虑，请随意删除它们，或自行从微软 DirectX 官方仓库获取：https://github.com/microsoft/DirectXTex/releases/tag/jun2024
 
-## How to run
+## 运行方法
 
-Dowload zip and extract. Either double click `launch.bat` to automatically find the latest python version available and run the app using it or manually run `collect.py` with python.
+下载压缩包并解压。你可以双击 `launch.bat` 自动查找系统中的最新 Python 版本并运行程序，或者手动用 Python 运行 `collect.py`。
 
-## Thanks to the direct and indirect contributions of
-- [**SilentNightSound**](https://github.com/SilentNightSound/): None of this would've been possible without the [original collect script](https://github.com/SilentNightSound/GI-Model-Importer/blob/main/Tools/genshin_3dmigoto_collect.py) written by Silent (and GIMI obviously).
-- [**SinsOfSeven**](https://github.com/SinsOfSeven/): Targeted Dumping/Analysis pioneer
-- [**Gustav0**](https://github.com/Seris0/): Huge help testing
-- [**Satan1c**](https://github.com/Satan1c): [Guide](https://leotorrez.github.io/modding/guides/hunting) writing
-- [**LeoMods**](https://github.com/leotorrez/): XXMI Tools and [Guide website](https://leotorrez.github.io/modding/) writing
-- [**DarkStarSword**](https://github.com/DarkStarSword), [**Bo3b**](https://github.com/bo3b), and Chiri: 3DMigoto authors
+## 特别感谢以下开发者的直接或间接贡献：
+- [**SilentNightSound**](https://github.com/SilentNightSound/)：如果没有 [最初的 collect 脚本](https://github.com/SilentNightSound/GI-Model-Importer/blob/main/Tools/genshin_3dmigoto_collect.py) 和 GIMI，所有这些都不可能实现。
+- [**SinsOfSeven**](https://github.com/SinsOfSeven/)：目标转储与数据分析的先驱
+- [**Gustav0**](https://github.com/Seris0/)：测试方面提供了巨大帮助
+- [**Satan1c**](https://github.com/Satan1c)：[教程](https://leotorrez.github.io/modding/guides/hunting) 编写
+- [**LeoMods**](https://github.com/leotorrez/)：XXMI 工具及[教程网站](https://leotorrez.github.io/modding/) 编写
+- [**DarkStarSword**](https://github.com/DarkStarSword)、[**Bo3b**](https://github.com/bo3b) 和 Chiri：3DMigoto 作者
 
 <div>
     <img src='resources/images/icons/Sucrose.png'/>
