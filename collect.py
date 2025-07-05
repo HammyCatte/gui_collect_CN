@@ -7,7 +7,7 @@ from backend.utils.texture_utils.TextureManager import TextureManager
 from frontend.app import App
 
 def main():
-    print('3dmigoto GUI collect script')
+    print('3dmigoto GUI 提取工具')
     cfg = Config()
     targeted_analysis.clear()
     with tempfile.TemporaryDirectory() as temp_dir:
