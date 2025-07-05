@@ -71,8 +71,8 @@ class TextureGridItem(tk.Canvas):
         def handle_show():
             subprocess.Popen(f'{FILEBROWSER_PATH} /select,"{self.texture.path}"')
 
-        m.add_command(label="Copy Texture Hash",     command=handle_copy) 
-        m.add_command(label="Show in File Explorer", command=handle_show)
+        m.add_command(label="复制贴图Hash",     command=handle_copy) 
+        m.add_command(label="打开文件位置", command=handle_show)
 
         return do_popup
 
@@ -178,10 +178,10 @@ class TextureTypeFrame(ScrollableFrame):
 
         tk.Label(
             self, font=('Microsoft YaHei', '10', 'bold'), fg='#444', bg=self['bg'], anchor='center',
-            text='Either pick one of the above\noptions or type and hit Enter',
+            text='选择一项或手动输入后按 Enter',
         ).pack(side='bottom', fill='x')
 
-        for texture_type in ['Diffuse', 'NormalMap', 'MaterialMap', 'LightMap', 'StockingMap']:
+        for texture_type in ['Diffuse', 'NormalMap', 'LightMap', 'MaterialMap', 'GlowMap']:
             texture_type_label = tk.Label(self, text=texture_type, **TYPE_STYLE)
             texture_type_label.pack(side='top', fill='x', pady=(0, 1))
             

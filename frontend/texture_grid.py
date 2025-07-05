@@ -63,8 +63,8 @@ class TextureGrid(tk.Frame):
         def handle_copy(label):
             self.clipboard_clear()
             self.clipboard_append(label.cget('text').split(': ')[1])
-        m.add_command(label="Copy Vertex Shader Hash", command=partial(handle_copy, self.vs_label))
-        m.add_command(label="Copy Pixel Shader Hash", command=partial(handle_copy, self.ps_label))
+        m.add_command(label="复制 VS Hash", command=partial(handle_copy, self.vs_label))
+        m.add_command(label="复制 PS Hash", command=partial(handle_copy, self.ps_label))
         self.vs_label.bind('<Button-3>', func=do_popup)
         self.ps_label.bind('<Button-3>', func=do_popup)
 

@@ -131,7 +131,7 @@ class TextureBar(tk.Frame):
         self.component_summary = ScrollableFrame(self, bg='#222')
         self.component_summary.grid(sticky="nsew", row=0, column=0, columnspan=2)
 
-        self.cancel = FlatButton(self, text='Cancel', bg='#444', hover_bg='#A00')
+        self.cancel = FlatButton(self, text='取消', bg='#444', hover_bg='#A00')
         self.cancel.bind('<Button-1>', lambda _: self.cancel_texture_collection())
         self.cancel.grid(sticky='nsew', row=1, column=0, padx=(0, 2), ipadx=56, ipady=16)
 
@@ -141,7 +141,7 @@ class TextureBar(tk.Frame):
         # self.go_next = tk.Label(self, text='Next')
         # self.go_next.bind('<Button-1>', lambda _: self.go_to_next())
 
-        self.done = FlatButton(self, text='Done', bg='#444', hover_bg='#A00')
+        self.done = FlatButton(self, text='完成', bg='#444', hover_bg='#A00')
         self.done.bind('<Button-1>', lambda _: self.done_texture_collection())
         self.done.grid(sticky='nsew', row=1, column=1, padx=(0, 0), ipadx=56, ipady=16)
 
