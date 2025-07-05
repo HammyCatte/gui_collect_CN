@@ -12,7 +12,7 @@
 
 ## 运行方法
 
-下载压缩包并解压。你可以双击 `launch.bat` 自动查找系统中的最新 Python 版本并运行程序，或者手动用 Python 运行 `collect.py`。
+下载压缩包并解压。你可以双击 `启动.bat` 自动查找系统中的最新 Python 版本并运行程序，或者手动用 Python 运行 `collect.py`。
 
 ## 特别感谢以下开发者的直接或间接贡献：
 - [**SilentNightSound**](https://github.com/SilentNightSound/)：如果没有 [最初的 collect 脚本](https://github.com/SilentNightSound/GI-Model-Importer/blob/main/Tools/genshin_3dmigoto_collect.py) 和 GIMI，所有这些都不可能实现。
